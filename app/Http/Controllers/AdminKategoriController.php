@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kategori;
 
 
-class KategoriController extends Controller
+class AdminKategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kategori.create');
     }
 
     /**
@@ -37,7 +37,13 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required'
+        ]);
+
+        Kategori::create($validated);
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori berhasil ditambahkan.');
     }
 
     /**
@@ -82,6 +88,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kategori::destroy($id);
+        return redirect('/admin/kategori')->with('success', 'Kategori berhasil dihapus!');
     }
 }

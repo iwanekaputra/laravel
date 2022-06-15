@@ -49,7 +49,10 @@
 											</a>
 											@csrf
 											@method('DELETE')
-											<button type="submit" class="badge badge-danger border-0" onclick="return confirm('data yakin dihapus?')">Delete</i></button>
+											<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+												<button type="submit" class="badge badge-danger border-0" onclick="return confirm('data yakin dihapus?')">Delete</i></button>
+				
+											</div>
 												
 										</form>
 									</td>
@@ -69,7 +72,6 @@
 			
 		
 
-	@include('admin.kategori.create')
 	
 
 

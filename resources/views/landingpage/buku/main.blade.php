@@ -14,7 +14,6 @@
 
 <body>
     @include('landingpage.header')
-    @include('landingpage.hero')
 
   <main id="main">
     <!-- ======= Clients Section ======= -->

@@ -30,6 +30,11 @@
 					<div class="pd-20">
 						<h4 class="text-blue h4">Buku</h4>
 					</div>
+					@error('deskripsi')
+					      <div class="invalid-feedback">
+							{{ $message }}				      	
+					      </div>
+				      @enderror
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
@@ -49,10 +54,9 @@
 										<td>{{ $buku->isbn }}</td>
 										<td>{{ $buku->stok }}</td>
 										<td>
+											<form action="{{route('buku.destroy', $buku->id)}}" method="POST">
 											<a class="badge badge-primary" href="{{ route('buku.edit',$buku->id) }}">Edit</a>
 											<a class="badge badge-info" href="{{ route('buku.show',$buku->id) }}">Detail</a>
-											<form action="{{route('buku.destroy', $buku->id)}}" method="POST">
-											</a>
 												@csrf
 												@method('DELETE')
 												<button type="submit" class="badge badge-danger border-0" onclick="return confirm('data yakin dihapus?')">Delete</i></button>
@@ -74,8 +78,6 @@
 <br>
 			
 		
-
-	@include('admin.buku.create')
 	
 
 

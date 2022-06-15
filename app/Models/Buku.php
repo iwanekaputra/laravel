@@ -12,6 +12,15 @@ class Buku extends Model
     // protected $table ='buku';
     // protected $fillable = ['isbn','judul','cover','stok','idpengarang','idpenerbit','idkategori','idrak'];
 
+    public function scopeFilter($query, array $filters) {
+
+        $query->when($filters['kategori'] ?? false, function ($query, $kategori) {
+            return $query->whereHas('kategori', function ($query) use ($kategori) {
+                $query->where('nama', $kategori);
+            });
+        });
+    }
+
     public function kategori() {
         return $this->belongsTo(Kategori::class);
     }

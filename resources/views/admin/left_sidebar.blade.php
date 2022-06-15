@@ -19,10 +19,14 @@
 						<a href="{{ url('/admin/anggota') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-user1"></span><span class="mtext">Data Anggota</span>
 						</a>
-					</li>
-						<a href="{{ url('/admin/buku') }}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-notebook"></span><span class="mtext">Data Buku</span>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Buku</span>
 						</a>
+						<ul class="submenu">
+							<li><a href="{{ route('buku.index') }}">Data Buku</a></li>
+							<li><a href="{{ route('buku.create') }}">Tambah Buku</a></li>
+						</ul>
 					</li>
 					<li>
 						<a href="{{ url('/admin/penerbit') }}" class="dropdown-toggle no-arrow">
@@ -34,10 +38,14 @@
 							<span class="micon dw dw-user1"></span><span class="mtext">Data Pengarang</span>
 						</a>
 					</li>
-					<li>
-						<a href="{{ url('/admin/kategori') }}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-user1"></span><span class="mtext">Data Kategori</span>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Kategori</span>
 						</a>
+						<ul class="submenu">
+							<li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
+							<li><a href="{{ route('kategori.create') }}">Tambah Kategori</a></li>
+						</ul>
 					</li>
 					</li>
 						<a href="{{ url('/admin/rak') }}" class="dropdown-toggle no-arrow">

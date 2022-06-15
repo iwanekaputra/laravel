@@ -25,7 +25,6 @@
 			
 		
 
-	@include('admin.buku.create')
 	
 
 

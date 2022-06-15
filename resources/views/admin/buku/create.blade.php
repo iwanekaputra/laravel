@@ -1,99 +1,118 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-				<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Tambah Data Buku</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
+@extends('admin.main')
+
+@section('section')
+
+<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Form</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Form Basic</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
 				</div>
-				<div class="modal-body">
-					<form action="{{route('buku.store')}}" method="POST" enctype="multipart/form-data">
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4 mb-30">Tambah Buku</h4>
+						</div>
+					</div>
+					<form action="{{ route('buku.store') }}" method="POST" enctype="multipart/form-data">
 						@csrf
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>ISBN :</strong>
-									<input type="text" name="isbn" class="form-control" placeholder="ISBN">
-								</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Isbn</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="isbn">
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Judul :</strong>
-									<input type="text" name="judul" class="form-control" placeholder="Judul">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Stok :</strong>
-									<input type="text" name="stok" class="form-control" placeholder="Stok">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Halaman :</strong>
-									<input type="text" name="halaman" class="form-control" placeholder="Stok">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Harga :</strong>
-									<input type="text" name="harga" class="form-control" placeholder="Stok">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Pengarang :</strong>
-									<input type="text" name="pengarang_id" class="form-control" placeholder="Idpengarang">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Penerbit :</strong>
-									<input type="text" name="penerbit_id" class="form-control" placeholder="Idpenerbit">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Kategori : </strong>
-									@foreach ($kategoris as $kategori)
-										<select class="form-select" aria-label="Default select example">
-										  <option selected>Open this select menu</option>
-										  <option value="1">One</option>
-										  <option value="2">Two</option>
-										  <option value="3">Three</option>
-										</select>									
-										@endforeach
-									
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="form-group">
-									<strong>Rak :</strong>
-									<input type="text" name="rak_id" class="form-control" placeholder="Rak">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<strong>Cover :</strong>
-								<div class="input-group custom-file">
-									<img class="cover-preview img-fluid col-sm-5 mb-3 d-block" alt="">
-								  	<input type="file" class="form-control" id="cover" name="cover" onchange="previewCover()">
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12 mt-4">
-								<div class="form-group">
-									<strong>Deskripsi :</strong>
-							   	 	<textarea class="form-control " id="validationTextarea" placeholder="Required example textarea" name="deskripsi"></textarea>
-							    </div>
+							@error('isbn')
+					      <div class="invalid-feedback">
+							{{ $message }}				      	
+					      </div>
+				      @enderror
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Judul</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="judul">
 							</div>
 						</div>
-					
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
-				</div>
-				</form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Stok</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="stok">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Halaman</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="halaman">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Harga</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="harga">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Pengarang</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="pengarang_id">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Penerbit</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="penerbit_id">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Kategori</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="kategori_id">
+									@foreach ($kategoris as $kategori)
+										<option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+									@endforeach
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Rak</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" name="rak_id">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Cover</label>
+							<div class="col-sm-12 col-md-10">
+								<img class="cover-preview img-fluid col-sm-5 d-block" alt="">
+								<input type="file" class="form-control-file form-control height-auto" id="cover" name="cover" onchange="previewCover()">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
+							<div class="col-sm-12 col-md-10">
+								<textarea class="form-control " id="validationTextarea" placeholder="Required example textarea" name="deskripsi"></textarea>
+							</div>
+						</div>
+
+						<button class="btn btn-primary" type="submit">Cancel</button>
+						<button class="btn btn-primary" type="submit">Button</button>
+
+						
+						
+					</form>
 				</div>
 			</div>
-			</div>
+		</div>
+			@endsection
