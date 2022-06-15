@@ -7,12 +7,12 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
-							<h4>Dashboard</h4>
+							<h4>Buku</h4>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+								<li class="breadcrumb-item active" aria-current="page">Buku</li>
 							</ol>
 						</nav>
 					</div>
@@ -28,7 +28,7 @@
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
-						<h4 class="text-blue h4">Detail</h4>
+						<h4 class="text-blue h4">Buku</h4>
 					</div>
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
@@ -50,8 +50,8 @@
 										<td>{{ $buku->stok }}</td>
 										<td>
 											<a class="badge badge-primary" href="{{ route('buku.edit',$buku->id) }}">Edit</a>
-											<a class="badge badge-info" href="{{ route('buku.edit',$buku->id) }}">Detail</a>
-											<form action="{{route('buku.show', $buku->id)}}" method="POST">
+											<a class="badge badge-info" href="{{ route('buku.show',$buku->id) }}">Detail</a>
+											<form action="{{route('buku.destroy', $buku->id)}}" method="POST">
 											</a>
 												@csrf
 												@method('DELETE')
@@ -75,7 +75,7 @@
 			
 		
 
-	@include('admin.create')
+	@include('admin.buku.create')
 	
 
 

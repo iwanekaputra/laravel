@@ -55,8 +55,16 @@
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">
 								<div class="form-group">
-									<strong>Kategori :</strong>
-									<input type="text" name="kategori_id" class="form-control" placeholder="Idkategori">
+									<strong>Kategori : </strong>
+									@foreach ($kategoris as $kategori)
+										<select class="form-select" aria-label="Default select example">
+										  <option selected>Open this select menu</option>
+										  <option value="1">One</option>
+										  <option value="2">Two</option>
+										  <option value="3">Three</option>
+										</select>									
+										@endforeach
+									
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12">

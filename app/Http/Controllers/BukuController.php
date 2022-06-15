@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
@@ -16,8 +17,8 @@ class BukuController extends Controller
     {
         //
         $bukus = Buku::latest()->get();
-       
-        return view('admin.index',compact('bukus'))
+        $kategoris = Kategori::latest()->get();       
+        return view('admin.buku.index',compact('bukus'), compact('kategoris'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -28,8 +29,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.index');
+        return view('admin.buku.create');
     }
 
     /**
@@ -76,7 +76,8 @@ class BukuController extends Controller
      */
     public function show(Buku $buku)
     {
-        //
+        $buku = Buku::findOrFail($buku->id);
+        return view('admin.buku.show', compact('buku'));
     }
 
     /**
@@ -88,7 +89,7 @@ class BukuController extends Controller
     public function edit(Buku $buku)
     {
         //
-        return view('admin.edit',compact('buku'));
+        return view('admin.buku.edit',compact('buku'));
     }
 
     /**

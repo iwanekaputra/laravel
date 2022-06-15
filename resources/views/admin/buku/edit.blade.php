@@ -63,25 +63,25 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Pengarang</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="pengarang_id"  value="{{$buku->pengarang_id}}" class="form-control" placeholder="Pengarang">
+                            <input type="text" name="pengarang_id"  value="{{$buku->pengarang->nama}}" class="form-control" placeholder="Pengarang">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Penerbit</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="penerbit_id"  value="{{$buku->penerbit_id}}" class="form-control" placeholder="Penerbit">
+                            <input type="text" name="penerbit_id"  value="{{$buku->penerbit->nama}}" class="form-control" placeholder="Penerbit">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Kategori</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="kategori_id"  value="{{$buku->kategori_id}}" class="form-control" placeholder="Kategori">
+                            <input type="text" name="kategori_id"  value="{{$buku->kategori->nama}}" class="form-control" placeholder="Kategori">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Rak</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="rak_id"  value="{{$buku->rak_id}}" class="form-control" placeholder="Rak">
+                            <input type="text" name="rak_id"  value="{{$buku->rak->nama}}" class="form-control" placeholder="Rak">
 							</div>
 						</div>
 						<div class="form-group row">

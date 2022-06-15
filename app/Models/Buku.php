@@ -11,4 +11,20 @@ class Buku extends Model
     protected $guarded = ['id'];
     // protected $table ='buku';
     // protected $fillable = ['isbn','judul','cover','stok','idpengarang','idpenerbit','idkategori','idrak'];
+
+    public function kategori() {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function pengarang() {
+        return $this->belongsTo(Pengarang::class);
+    }
+
+    public function penerbit() {
+        return $this->belongsTo(Penerbit::class);
+    }
+
+    public function rak() {
+        return $this->belongsTo(Rak::class);
+    }
 }
