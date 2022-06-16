@@ -23,8 +23,23 @@
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" class=""  data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a></li>
-          <li><a class="getstarted scrollto" class="" data-bs-toggle="modal" data-bs-target="#examplModal">Register</a></li>
+          @auth
+            <li class="dropdown"><a href="#"><span>{{ Auth::user()->fullname }}</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="">Profile</a></li>
+              <li>
+                <form action="/logout" method="post">
+                  @csrf
+                  <button type="submit" class="dropdown-item fs-8"> Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+          @else
+          <li><a class="getstarted scrollto" class=""  data-backdrop="static" data-toggle="modal" data-target="#login-modal" type="button">Login</a></li>
+          <li><a class="getstarted scrollto" class="" href="/register">Register</a></li>
+          @endauth
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -32,32 +47,49 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Login modal -->
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login to your account</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
-      <div class="modal-body">
+      <div class="login-box bg-white box-shadow border-radius-10">
+        <div class="login-title">
+          <h2 class="text-center text-primary ">Login To App</h2>
+        </div>
         <form action="/login" method="post">
-            @csrf
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
-              <label for="floatingInput">Email</label>
+          @csrf
+          <div class="input-group custom">
+            <input type="text" class="form-control form-control-lg" placeholder="Email" name="email">
+            <div class="input-group-append custom">
+              <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
             </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-              <label for="floatingPassword">Password</label>
+          </div>
+          <div class="input-group custom">
+            <input type="password" class="form-control form-control-lg" placeholder="**********" name="password">
+            <div class="input-group-append custom">
+              <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <div class="row pb-30">
+            <div class="col-6">
             </div>
+            <div class="col-6">
+              <div class="forgot-password"><a href="">Forgot Password</a></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="input-group mb-0">
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">  
+              </div>
+            </div>
+          </div>
         </form>
       </div>
-      
     </div>
   </div>
 </div>

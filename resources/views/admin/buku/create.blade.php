@@ -29,16 +29,15 @@
 					</div>
 					<form action="{{ route('buku.store') }}" method="POST" enctype="multipart/form-data">
 						@csrf
-						<div class="form-group row">
+						<div class="form-group @error('isbn') has-danger @enderror row">
 							<label class="col-sm-12 col-md-2 col-form-label">Isbn</label>
 							<div class="col-sm-12 col-md-10">
 								<input class="form-control" type="text" name="isbn">
 							</div>
 							@error('isbn')
-					      <div class="invalid-feedback">
-							{{ $message }}				      	
-					      </div>
-				      @enderror
+						      <div class="form-control-feedback has-danger">{{ $message }}</div>
+
+				      		@enderror
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Judul</label>

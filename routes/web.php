@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminBukuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminKategoriController;
+use App\Http\Controllers\AdminPeminjamanController;
 use App\Models\Kategori;
 
 
@@ -29,19 +31,28 @@ use App\Models\Kategori;
 Route::get('/', function () {
 	$kategoris = Kategori::latest()->get();
 	return view('landingpage.home', compact('kategoris'));
-});
+})->name('buku');
+
 Route::get('/buku', [BukuController::class, 'index']);
+Route::post('/buku', [BukuController::class, 'store']);
 
 
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->middleware('auth')->name('admin');
+})->middleware('admin')->name('admin');
 
-Route::resource('admin/buku', AdminBukuController::class)->middleware('auth');
-Route::resource('admin/kategori', AdminKategoriController::class)->middleware('auth');
+Route::resource('admin/peminjam', AdminPeminjamanController::class)->middleware('auth');
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+
+Route::resource('admin/buku', AdminBukuController::class)->middleware('admin');
+Route::resource('admin/kategori', AdminKategoriController::class)->middleware('admin');
 
 
