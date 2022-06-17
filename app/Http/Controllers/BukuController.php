@@ -39,7 +39,7 @@ class BukuController extends Controller
             'tgl_kembali' => 'required',
         ]);
 
-        $validated['user_id'] = 1;
+        $validated['user_id'] = auth()->user()->id;
         $validated['buku_id'] = $request->buku_id;
         $validated['keterangan_id'] = 1;
 

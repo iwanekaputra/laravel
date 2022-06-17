@@ -72,7 +72,11 @@ class AdminPeminjamanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->keterangan_id) {
+            Peminjaman::where('id', $id)->update(['keterangan_id' => $request->keterangan_id]);
+        }
+
+        return redirect('admin/peminjam')->with('success', 'Konfirmasi diterima');
     }
 
     /**

@@ -44,7 +44,7 @@
               <a class="dropdown-item" href=""><i class="dw dw-user1"></i> Profile</a>
               <a class="dropdown-item" href=""><i class="dw dw-settings2"></i> Setting</a>
               <a class="dropdown-item" href=""><i class="dw dw-help"></i> Help</a>
-              <form action="/logout" method="POST">
+              <form action="{{ url('logout') }}" method="POST">
                   @csrf
                   <button type="submit" class="dropdown-item">
                       <i class="dw dw-logout"></i> Log Out

@@ -24,20 +24,21 @@
           
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           @auth
+          <li><a class="nav-icon position-relative text-decoration-none" href="{{ url('buku-dipinjam') }}"><i class="icon-copy fa fa-book" aria-hidden="true"></i><span class="position-absolute top-0 translate-middle badge rounded-pill bg-dark text-white">{{ DB::table('peminjamen')->where('user_id', auth()->user()->id)->count() }}</span></a></li>
             <li class="dropdown"><a href="#"><span>{{ Auth::user()->fullname }}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="">Profile</a></li>
               <li>
-                <form action="/logout" method="post">
+                <form action="{{ url('logout') }}" method="post">
                   @csrf
                   <button type="submit" class="dropdown-item fs-8"> Logout</button>
                 </form>
               </li>
             </ul>
           </li>
+          
           @else
           <li><a class="getstarted scrollto" class=""  data-backdrop="static" data-toggle="modal" data-target="#login-modal" type="button">Login</a></li>
-          <li><a class="getstarted scrollto" class="" href="/register">Register</a></li>
+          <li><a class="getstarted scrollto" class="" href="{{ url('register') }}">Register</a></li>
           @endauth
           
         </ul>
@@ -48,6 +49,7 @@
   </header><!-- End Header -->
 
 
+  
 <!-- Login modal -->
 
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -60,7 +62,7 @@
         <div class="login-title">
           <h2 class="text-center text-primary ">Login To App</h2>
         </div>
-        <form action="/login" method="post">
+        <form action="{{ url('login') }}" method="post">
           @csrf
           <div class="input-group custom">
             <input type="text" class="form-control form-control-lg" placeholder="Email" name="email">

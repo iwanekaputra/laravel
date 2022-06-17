@@ -95,8 +95,8 @@ class AdminBukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
-        return view('admin.buku.edit',compact('buku'));
+        $kategoris = Kategori::latest()->get();       
+        return view('admin.buku.edit',compact('buku', 'kategoris'));
     }
 
     /**
@@ -155,7 +155,6 @@ class AdminBukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
         $buku->DELETE();
         return redirect()->route('buku.index')
                         ->with('delete','Product deleted successfully');

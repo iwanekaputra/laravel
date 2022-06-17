@@ -101,7 +101,7 @@
 							</div>
 							<div class="form-group">
 									<label>Tanggal Pinjam</label>
-									<input class="form-control date-picker" placeholder="Select Date" type="date" name="tgl_pinjam">
+									<input class="form-control" placeholder="Select Date" type="date" name="tgl_pinjam">
 								</div>
 							<div class="form-group">
 									<label>Tanggal Pengembalian</label>

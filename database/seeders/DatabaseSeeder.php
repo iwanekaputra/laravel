@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Buku;
 use App\Models\Pengarang;
+use App\Models\Keterangan;
 use App\Models\Penerbit;
 use App\Models\Rak;
 use App\Models\User;
@@ -172,7 +173,15 @@ class DatabaseSeeder extends Seeder
             'is_admin' => 1
         ]);
 
-
+        Keterangan::create([
+            'status' => 'Sedang Dikonfirmasi'
+        ]);
+        Keterangan::create([
+            'status' => 'Konfirmasi'
+        ]);
+        Keterangan::create([
+            'status' => 'Gagal Konfirmasi'
+        ]);
     }
 
 

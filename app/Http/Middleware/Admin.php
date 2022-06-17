@@ -20,7 +20,7 @@ class Admin
     {
 
        if(auth()->user()->is_admin == 0) {
-            return redirect(route('buku'));
+            return redirect(route('buku'))->with('success', 'Login Berhasil!');
         } 
 
         return $next($request);

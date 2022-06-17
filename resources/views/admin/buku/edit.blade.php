@@ -33,55 +33,59 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">ISBN :</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="isbn" value="{{$buku->isbn}}" class="form-control" placeholder="ISBN">
+                            <input type="text" name="isbn" value="{{ old('isbn', $buku->isbn) }}" class="form-control @error('isbn')form-control-danger @enderror" placeholder="ISBN">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Judul</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="judul"  value="{{$buku->judul}}" class="form-control" placeholder="Judul">
+                            <input type="text" name="judul" value="{{ old('judul', $buku->judul) }}" class="form-control @error('judul')form-control-danger @enderror" placeholder="Judul">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Stok</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="stok"  value="{{$buku->stok}}" class="form-control" placeholder="Stok">
+                            <input type="text" name="stok"  value="{{ old('stok', $buku->stok) }}" class="form-control @error('stok')form-control-danger @enderror" placeholder="Stok">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Halaman</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="halaman"  value="{{$buku->halaman}}" class="form-control" placeholder="Halaman">
+                            <input type="text" name="halaman"  value="{{ old('halaman', $buku->halaman) }}" class="form-control @error('halaman')form-control-danger @enderror" placeholder="Halaman">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Harga</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="harga"  value="{{$buku->harga}}" class="form-control" placeholder="Harga">
+                            <input type="text" name="harga"  value="{{ old('harga', $buku->harga) }}" class="form-control @error('harga')form-control-danger @enderror" placeholder="Harga">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Pengarang</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="pengarang_id"  value="{{$buku->pengarang->nama}}" class="form-control" placeholder="Pengarang">
+                            <input type="text" name="pengarang_id"  value="{{ old('pengarang_id', $buku->pengarang_id) }}" class="form-control @error('pengarang_id')form-control-danger @enderror" placeholder="Pengarang">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Penerbit</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="penerbit_id"  value="{{$buku->penerbit->nama}}" class="form-control" placeholder="Penerbit">
+                            <input type="text" name="penerbit_id"  value="{{ old('penerbit_id', $buku->penerbit_id) }}" class="form-control @error('penerbit_id')form-control-danger @enderror" placeholder="Penerbit">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Kategori</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="kategori_id"  value="{{$buku->kategori->nama}}" class="form-control" placeholder="Kategori">
+                            <select class="custom-select col-12" name="kategori_id">
+									@foreach ($kategoris as $kategori)
+										<option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Rak</label>
 							<div class="col-sm-12 col-md-10">
-                            <input type="text" name="rak_id"  value="{{$buku->rak->nama}}" class="form-control" placeholder="Rak">
+                            <input type="text" name="rak_id"  value="{{ old('rak_id', $buku->rak_id) }}" class="form-control @error('rak_id')form-control-danger @enderror" placeholder="Rak">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -92,11 +96,15 @@
 	                        @else
 	                            <img class="cover-preview img-fluid col-sm-5 mb-3 d-block" alt="">
 	                        @endif
-                     		 <input class="form-control @error('cover') is-invalid @enderror" type="file" id="cover" name="cover" onchange="previewCover()">
+	                        							<div class="col-sm-12 col-md-10">
+
+	                        <input class="col-md-8 form-control @error('cover') form-control-danger @enderror" type="file" id="cover" name="cover" onchange="previewCover()">
+	                    </div>
+	                        
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
-                        	<textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" rows="5" placeholder="Masukkan Deskripsi">{{ old('deskripsi', $buku->deskripsi) }}</textarea>
+                        	<textarea class="form-control @error('deskripsi') form-control-danger @enderror" name="deskripsi" id="deskripsi" rows="5" placeholder="Masukkan Deskripsi">{{ old('deskripsi', $buku->deskripsi) }}</textarea>
 						</div>
 						<div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Save changes</button>

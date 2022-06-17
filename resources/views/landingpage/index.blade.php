@@ -8,13 +8,13 @@
   <title>Sistem Peminjaman Buku</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  @include('landingpage.link')
+  @include('landingpage.partials.link')
   @include('admin.link')
 </head>
 
 <body>
-    @include('landingpage.header')
-    @include('landingpage.hero')
+    @include('landingpage.partials.header')
+    @include('landingpage.partials.hero')
 
   <main id="main">
     <!-- ======= Clients Section ======= -->
@@ -23,11 +23,11 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-    @include('landingpage.footer')
+    @include('landingpage.partials.footer')
   </footer><!-- End Footer -->
 
   <a href="#main" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    @include('landingpage.script')
+    @include('landingpage.partials.script')
     @include('admin.script')
 
 </body>
