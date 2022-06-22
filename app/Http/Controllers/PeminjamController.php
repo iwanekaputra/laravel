@@ -10,13 +10,13 @@ use App\Models\Peminjaman;
 class PeminjamController extends Controller
 {
     public function index () {
-        $kategoris = Kategori::latest()->get();
         $peminjaman = Peminjaman::where('user_id', auth()->user()->id)->get();
     
-        return view("siswa.index", compact('kategoris', 'peminjaman'));
+        return view("siswa.index", compact('peminjaman'));
     }
 
     public function destroy($id) {
         Peminjaman::destroy($id);
-        return redirect('/buku-dipinjam')->with('success', 'Anda membatalkan pinjaman');    }
+        return redirect('/buku-dipinjam')->with('success', 'Anda membatalkan pinjaman');    
+    }
 }

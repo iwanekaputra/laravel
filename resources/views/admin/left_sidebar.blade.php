@@ -12,13 +12,13 @@
 				<ul id="accordion-menu"><br/><br>
 					<li>
 						<a href="{{url('/admin/dashboard')}}" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
+							<span class="micon icon-copy ti-dashboard"></span><span class="mtext">Dashboard</span>
 						</a>
 					</li>
 
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-house-1"></span><span class="mtext">Buku</span>
+							<i class="micon icon-copy dw dw-book1"></i></span><span class="mtext">Buku</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="{{ route('buku.index') }}">Data Buku</a></li>
@@ -40,14 +40,10 @@
 							<span class="micon dw dw-user1"></span><span class="mtext">Data Pengarang</span>
 						</a>
 					</li>
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
+					<li>
+						<a href="{{ route('kategori.index') }}" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-house-1"></span><span class="mtext">Kategori</span>
 						</a>
-						<ul class="submenu">
-							<li><a href="{{ route('kategori.index') }}">Data Kategori</a></li>
-							<li><a href="{{ route('kategori.create') }}">Tambah Kategori</a></li>
-						</ul>
 					</li>
 					</li>
 						<a href="{{ url('/admin/rak') }}" class="dropdown-toggle no-arrow">

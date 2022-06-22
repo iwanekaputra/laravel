@@ -17,9 +17,8 @@
 						</nav>
 					</div>
 					<div class="col-md-6 col-sm-12 text-right">
-						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-							Tambah Kategori
-						</button>
+						<button class="btn btn-primary" data-toggle="modal" data-target="#small-modal" type="button">Tambah Kategori</button>
+
 					</div>
 				</div>
 			</div>
@@ -51,7 +50,6 @@
 											@method('DELETE')
 											<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
 												<button type="submit" class="badge badge-danger border-0" onclick="return confirm('data yakin dihapus?')">Delete</i></button>
-				
 											</div>
 												
 										</form>
@@ -71,7 +69,24 @@
 <br>
 			
 		
-
+<div class="modal fade" id="small-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body">
+				<form action="{{ route('kategori.store') }}" method="POST">
+					@csrf
+					<div class="form-group">
+						<label>Nama : </label>
+						<input class="form-control" type="text" name="nama">
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 	
 
 

@@ -8,7 +8,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\AdminKategoriController;
 use App\Http\Controllers\AdminPeminjamanController;
-use App\Models\Kategori;
 
 
 /*
@@ -32,8 +31,7 @@ use App\Models\Kategori;
 
 // halaman landing page
 Route::get('/', function () {
-	$kategoris = Kategori::latest()->get();
-	return view('landingpage.partials.home', compact('kategoris'));
+	return view('landingpage.partials.home');
 })->name('buku');
 
 
@@ -52,29 +50,27 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 // route login
 Route::get('/login', function () {
-	$kategoris = Kategori::latest()->get();
-	return view('login.login', compact('kategoris'));
+	return view('login.login');
 });
 
-// page admin 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('admin')->name('admin');
 
 // page buku yang dipinjam siswa
 Route::get('/buku-dipinjam', [PeminjamController::class, 'index']);
 Route::post('batal/{id}', [PeminjamController::class, 'destroy']);
 
-// page admin di menu peminjam
-Route::resource('admin/peminjam', AdminPeminjamanController::class)->middleware('auth');
 
-// page admin pengelolaan buku
-Route::resource('admin/buku', AdminBukuController::class)->middleware('admin');
 
-// page admin pengelolaan kategori
-Route::resource('admin/kategori', AdminKategoriController::class)->middleware('admin');
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+	Route::get('dashboard', function () {
+	    return view('admin.dashboard');
+	})->name('dashboard');
 
-Route::get('refresh_captcha', [RegisterController::class, 'refreshCaptcha'])->name('refresh_captcha');
+	Route::resource('peminjam', AdminPeminjamanController::class);
+	Route::resource('buku', AdminBukuController::class);
+	Route::resource('kategori', AdminKategoriController::class);
+});
+
+
 
 
 

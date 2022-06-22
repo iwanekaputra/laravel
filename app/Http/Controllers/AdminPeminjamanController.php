@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Peminjaman;
+use App\Models\Keterangan;
 
 
 class AdminPeminjamanController extends Controller
@@ -17,7 +18,8 @@ class AdminPeminjamanController extends Controller
     public function index()
     {
         $peminjaman = Peminjaman::latest()->get();
-        return view('admin.peminjam.index', compact('peminjaman'));
+        $keterangans = Keterangan::latest()->get(); 
+        return view('admin.peminjam.index', compact('peminjaman', 'keterangans'));
     }
 
     /**

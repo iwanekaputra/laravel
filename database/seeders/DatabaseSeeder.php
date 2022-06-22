@@ -182,6 +182,15 @@ class DatabaseSeeder extends Seeder
         Keterangan::create([
             'status' => 'Gagal Konfirmasi'
         ]);
+        Keterangan::create([
+            'status' => 'Sedang Dipinjam'
+        ]);
+        Keterangan::create([
+            'status' => 'Denda'
+        ]);
+        Keterangan::create([
+            'status' => 'Sudah Dikembalikan'
+        ]);
     }
 
 

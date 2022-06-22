@@ -79,16 +79,57 @@
 					<img src="{{ asset('admin/vendors/images/' . $detail->cover) }}" alt="" class="bg_img">
 				</div>
 				<div class="col-md-7">
-					<p>Judul : {{ $detail->judul }}</p>
-					<p>Isbn : {{ $detail->isbn }}</p>
-					<p>Halaman : {{ $detail->halaman }}</p>
-					<p>Penerbit : {{ $detail->penerbit->nama }}</p>
-					<p>Penerbit : {{ $detail->pengarang->nama }}</p>
-					<p>Kategori : {{ $detail->kategori->nama }}</p>
-					<p>Rak : {{ $detail->rak->nama }}</p>
-					<p>Deskripsi : </p>
-					<p>{{ $detail->deskripsi }}</p>
-				</div>
+					<table class="table">                    
+	               	<tbody>
+	                   <tr>
+	                       <th>Judul</th>
+	                       <td>:</td>
+	                       <td>{{$detail->judul}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Isbn</th>
+	                       <td>:</td>
+	                       <td>{{$detail->isbn}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Halaman</th>
+	                       <td>:</td>
+	                       <td>{{$detail->halaman}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Penerbit</th>
+	                       <td>:</td>
+	                       <td>{{$detail->penerbit->nama}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Pengarang</th>
+	                       <td>:</td>
+	                       <td>{{ $detail->pengarang->nama }}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Kategori</th>
+	                       <td>:</td>
+	                       <td>{{ $detail->kategori->nama }}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Rak</th>
+	                       <td>:</td>
+	                       <td>{{$detail->rak->nama}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Stok</th>
+	                       <td>:</td>
+	                       <td>{{$detail->stok}}</td>
+	                   </tr>
+	                   <tr>
+	                       <th>Deskripsi</th>
+	                       <td>:</td>
+	                       <td></td>
+	                   </tr>
+	               	</tbody>
+           			</table>
+	                <p align="justify">{!! $detail->deskripsi !!}</p>
+        		</div>
 				</div>
 			</div>
 			<div class="modal-footer">

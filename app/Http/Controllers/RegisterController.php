@@ -15,8 +15,7 @@ class RegisterController extends Controller
 {
 
     public function index () {
-        $kategoris = Kategori::latest()->get();
-        return view('register.index', compact('kategoris'));
+        return view('register.index');
     }
 
     public function store(Request $request) {

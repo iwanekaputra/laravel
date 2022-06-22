@@ -24,7 +24,7 @@ class BukuController extends Controller
         $bukus = Buku::latest()->filter(request(['kategori']))->paginate(10)->withQueryString();
 
         $kategoris = Kategori::latest()->get();
-        return view('landingpage.buku.index', compact('kategoris', 'bukus'), [
+        return view('landingpage.buku.index', compact('bukus', 'kategoris'), [
             'title' => $title
         ] );
     }

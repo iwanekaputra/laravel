@@ -10,19 +10,12 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="{{ url('/') }}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/buku') }}">Buku</a></li>
-          <li class="dropdown"><a href="#"><span>Kategori</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              @foreach ($kategoris as $kategori)
-              <li><a href="/buku?kategori={{ $kategori->nama }}">{{ $kategori->nama }}</a></li>
-              @endforeach
-            </ul>
-          </li>
+          <li><a class="nav-link scrollto {{ Request::is('/*') ? 'active' : '' }}" href="{{ url('/') }}">Home</a></li>
+          <li><a class="nav-link scrollto {{ Request::is('buku*') ? 'active' : '' }}" href="{{ url('/buku') }}">Buku</a></li>
           <li><a class="nav-link scrollto" href="#about">About Us</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto {{ Request::is('contact/*') ? 'active' : '' }}" href="/contact">Contact</a></li>
           @auth
           <li><a class="nav-icon position-relative text-decoration-none" href="{{ url('buku-dipinjam') }}"><i class="icon-copy fa fa-book" aria-hidden="true"></i><span class="position-absolute top-0 translate-middle badge rounded-pill bg-dark text-white">{{ DB::table('peminjamen')->where('user_id', auth()->user()->id)->count() }}</span></a></li>
             <li class="dropdown"><a href="#"><span>{{ Auth::user()->fullname }}</span> <i class="bi bi-chevron-down"></i></a>
